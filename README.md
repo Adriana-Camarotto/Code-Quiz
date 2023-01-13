@@ -1,4 +1,4 @@
-# ✨  Code-quiz
+# ✨  Code Quiz
 
 ## 💡 Description
 
@@ -21,7 +21,7 @@ This app will run in the browser, and will feature dynamically updated HTML and 
 ![preview](https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxpng)
 ## Link
 
-[Click here to acsess!]( https://adriana-camarotto.github.io/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/)
+[Click here to acsess!]( https://adriana-camarotto.github.io/Code-Quiz/)
 
 ---
 
