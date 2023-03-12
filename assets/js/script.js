@@ -4,7 +4,9 @@ const question = document.getElementById('question-title');
 const answers = document.getElementById('answers');
 const choices = document.getElementById('choices');
 
-const totalTime = 60; // in seconds
+
+
+const totalTime = 30; // in seconds
 let timeLeft, 
     questionIndex, 
     score;
@@ -112,8 +114,16 @@ function checkAnswer(index) {
 // End the game
 function endQuiz() {
     timer.innerText = ``; // clear the timer.
-    const finalScore = document.getElementById("final-score"); // get the final score element.
-    finalScore.innerText = ` ${score} out of ${questions.length} questions correctly`; // clear the question.
+    const finalScore = document.getElementById("final-score").classList.add("hide"); // get the final score element.
+    finalScore.innerText = `You scored ${score} out of ${questions.length}!`; // clear the question.
     answers.innerHTML = ``; // clear the answers.
 }
 
+// Function that saves the user`s score and intials into local storage
+function saveScore () {
+    var initials = document.getElementById("initials").value;
+    var highscores = JSON.parse(locarStorage.getItem("highscores")) || [];
+    highscores.push({initials: initials, score: score});
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    window.location.href = "highscores.html";
+}

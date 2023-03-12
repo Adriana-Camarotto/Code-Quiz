@@ -34,18 +34,21 @@
        
       </div>
 
-      <div id="end-screen" class=""> <!--class="hide"-->
+      <div id="end-screen" class="hide"> <!--class="hide"-->
         <h2>Well done!</h2>
         <p>Your final score is: <span id="final-score"></span>.</p>
         <p>
-          Enter initials: <input type="text" id="initials" maxlength="3" />
-          <button id="submit">Submit</button>
+          Save your Score: <input type="text" id="initials" maxlength="5" placeholder="Enter your initials here."/>
+          <button class="saveScoreBtn" id="submit" type="submit" onClick="saveHighScore(event)" disabled>Submit</button>
         </p>
       </div>
+
 
       <div id="feedback" class="feedback"></div> <!--class="feedback hide"-->
     </div>
 
-    <script src="./assets/js/script.js"></script>
+    
+    <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/logic.js"></script>
    </body>
 </html>
