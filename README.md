@@ -17,8 +17,7 @@ This app will run in the browser, and will feature dynamically updated HTML and 
 ---
 
 ## Screenshot
-
-![preview](https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxpng)
+![preview](./assets/Screenshot%20-%20Coding%20Quiz.png)
 ## Link
 
 [Click here to acsess!]( https://adriana-camarotto.github.io/Code-Quiz/)
