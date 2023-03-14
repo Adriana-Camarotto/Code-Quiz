@@ -1,9 +1,14 @@
-const startBtn = document.getElementById("start-btn");
+const startBtn = document.getElementById('start-btn');
+const startScreen = document.getElementById('start-screen');
+const endScreen = document.getElementById('end-screen');
 const timer = document.getElementById("timer");    
 const question = document.getElementById('question-title');
 const answers = document.getElementById('answers');
 const choices = document.getElementById('choices');
-
+const finalScore = document.getElementById('final-score');
+const questionScreen = document.getElementById('questions');
+const submitBtn = document.getElementById('submit-btn');
+const initialsEl = document.getElementById('initials');
 var correctSound = new Audio("assets/sfx/correct.wav");
 var incorrectSound = new Audio("assets/sfx/incorrect.wav");
 
@@ -22,9 +27,10 @@ startBtn.addEventListener(`click`, startQuiz);
 //function sets an interval that updates the timer every second.
 // In other words it is responsible for setting up the timer for the quiz. 
 function startQuiz() {
-    startBtn.disabled = true; // disable the start button
+
+    startScreen.classList.add("hide");
     timeLeft = totalTime; // set the time left to the total time.
-    questionIndex = 0; // set the question index to 0. Which is the index of the fist question in the questions array.
+    questionIndex = 0; // set the question index to 0. Which is the index of the first question in the questions array.
     score = 0; // set the score to 0.
     displayQuestion(); //call the function to display the first question.
     startTimer(); //call the function again to start the timer.
@@ -46,9 +52,9 @@ function startTimer() {
 function displayQuestion() { // Show the question
     question.innerText = questions[questionIndex].question; // display the question
     answers.innerHTML = ``; // empty the answers
-    questions[questionIndex].choices.forEach((choices, index) => { // for each option
+    questions[questionIndex].choices.forEach((choice, index) => { // for each option
         const button = document.createElement(`button`); // create a button
-        button.innerText = choices; // set the button text to the option
+        button.innerText = choice; // set the button text to the option
         button.addEventListener(`click`, () => checkAnswer(index)); // add an event listener to the button
         answers.appendChild(button); //adds the button element as a child to the answers element in an HTML document using JavaScript.     
     });
@@ -59,12 +65,12 @@ function displayQuestion() { // Show the question
 function checkAnswer(index) { 
     if (index === questions[questionIndex].answer) { // if the answer is correct
         correctSound.play();
-        document.getElementById("feedback").innerHTML = "Correct!"
+        document.getElementById("feedback").innerHTML = "Correct!";
         score++;// add 1 to the score.
     } else {
         timeLeft -= 10; //subtract 10 seconds from the time left.
         incorrectSound.play();
-        document.getElementById("feedback").innerHTML = "Wrong!"
+        document.getElementById("feedback").innerHTML = "Wrong!";
     }
     questionIndex++; // increment the question index.
     if (questionIndex === questions.length) { // if the question index is equal to the length of the questions array.
@@ -73,20 +79,30 @@ function checkAnswer(index) {
         displayQuestion(); // call the function again to display the next question.
     }
 }
-    
+
 // End the game
 function endQuiz() {
+    questionScreen.classList.add("hide");
+    endScreen.classList.remove("hide");
     timer.innerText = ``; // clear the timer.
-    const finalScore = document.getElementById("final-score"); // get the final score element.
-    finalScore.innerText = `You scored ${score} out of ${questions.length}!`; // clear the question.
+    finalScore.innerText = `${score} out of ${questions.length}!`; // clear the question.
+    //add event listener to save button
     answers.innerHTML = ``; // clear the answers.
-}
+        
+    // Submit the the intials and scores
+    //Get the submit button element
 
-// Function that saves the user`s score and intials into local storage
-function saveScore () {
-    var initials = document.getElementById("initials").value;
-    var highscores = JSON.parse(locarStorage.getItem("highscores")) || [];
-    highscores.push({initials: initials, score: score});
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-    window.location.href = "highscores.html";
 }
+//Add an event listener to the submit button the scores and initials
+ submitBtn.addEventListener('click', function() {
+     const initials = initialsEl.value.toUpperCase();
+  
+     if (initials) {
+         var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+         highScores.push({initials: initials, score: score});
+         localStorage.setItem("highscores", JSON.stringify(highScores));
+         window.location.href = "highscores.html";
+     }
+ });     
+
+

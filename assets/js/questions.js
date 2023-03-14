@@ -1,13 +1,13 @@
 const questions = [
     {
-        question: `What is JavaScript?:`,
+        question: `What is JavaScript?`,
         choices: [
             "A markup language",
-            "A programming language",
             "A stalyng language",
+            "A programming language",
             "A database language"
         ],
-        answer: 1,
+        answer: 2,
     },
     {
         question: `Wich of the following is NOT a primitive data type in JavaScript?`,

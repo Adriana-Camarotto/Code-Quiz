@@ -11,11 +11,12 @@
   </head>
 
   <body>
-    <div class="scores"><a href="./highscores.html">View Highscores <i class="fa-solid fa-crown"></i></a></div>
+    <div class="scores"><a href="highscores.html">View Highscores <i class="fa-solid fa-crown"></i></a></div>
 
     <div class="timer"><i class="fa-solid fa-hourglass-start"></i> Time: <span id="timer">0</span></div>
 
     <div class="wrapper">
+
       <div id="start-screen" class="start">
         <h1>Coding Quiz Challenge</h1>
         
@@ -24,30 +25,36 @@
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
+        <!-- Button to start the quiz  -->
         <button id="start-btn"><i class="fa-solid fa-play"></i> Start Quiz </i></button>
       </div>
 
+      <!-- Div for quiz questions, choices and answers  -->
       <div id="questions" class=""> <!--class="hide"-->
         <h2 id="question-title"></h2>
         <div id="choices" class="choices"></div>
-        <div id="answers"></div>
-       
+        <div id="answers"></div>      
       </div>
 
-      <div id="end-screen" class=""> <!--class="hide"-->
+      <!-- Div end-screen  -->
+      <div id="end-screen" class="hide"> <!--class="hide"-->
         <h2>Well done!</h2>
-        <p>Your final score is: <span id="final-score"></span>.</p>
+        <p>Your final score is <span id="final-score"></span>.</p>
         <p>
-          Save your Score: <input type="text" id="initials" maxlength="5" placeholder="Enter your initials here."/>
-          <button class="saveScoreBtn" id="submit" type="submit" onClick="saveHighScore(event)" disabled>Submit</button>
+          Save your Score <input type="text" id="initials" max="5" placeholder="Enter your initials here."/>
+          
+          <!-- Button to save score-->
+          <button class="saveScoreBtn" id="submit-btn" type="button">Submit</button>
+          
         </p>
       </div>
 
-
+      
       <div id="feedback" class="feedback"></div> <!--class="feedback hide"-->
     </div>
 
     
+
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/logic.js"></script>
    </body>
